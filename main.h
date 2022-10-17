@@ -3,26 +3,28 @@
 
 #include <stdlib.h>
 #include <stdarg.h>
+#include <stdio.h>
 
 /**
- * struct flags - struct containing flags to "turn on" when
- * a flag specifier is passed to _printf()
- * @plus: flag for '+' character
- * @space: flag for ' ' character
- * @hash: flag for the '#' character
+ * struct specifiers - Struct specifiers
+ * @specifier: The conversion specifier
+ * @f: The function pointer
  */
-typedef struct flags
+typedef struct specifiers
 {
-	int plus;
-	int space;
-	int hash;
-} flags_t;
+	char *specifier;
+	int (*f)(va_list args);
+} spc_dt;
 
 int _printf(const char *format, ...);
-int _putchar(char c);
-int (*get_print(char s))(va_list, flags_t *);
-int get_flag(char s, flags_t *f);
-int print_string(va_list l, flags_t *f);
-int print_char(va_list l, flags_t *f);
+int _print_format(const char *format, va_list args);
+int _write(char c);
+int _print_a_char(va_list args);
+int _print_a_string(va_list args);
+int _print_a_integer(va_list args);
+int _print_int_binary(va_list args);
+int _validate_char(char _type);
+int _print_spec(char format, va_list args);
+int _print_invalid_spec(char prev_format, char format, int count);
 
 #endif
