@@ -10,21 +10,21 @@
 
 int _print_int_binary(va_list args)
 {
-	unsigned int w = 0;
+	unsigned int x = 0;
 	int b = 0, new = 0;
 
 	new = va_arg(args, int);
-	w = new;
+	x = new;
 	if (new < 0)
 	{
 		_write('1');
 		new = new * -1;
-		w = new;
+		x = new;
 		b += 1;
 	}
-	while (w > 0)
+	while (x > 0)
 	{
-		w = w / 2;
+		x = x / 2;
 		b++;
 	}
 
